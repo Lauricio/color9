@@ -1,0 +1,125 @@
+<head>
+  <title>color</title>
+</head>
+
+<body>
+{{> locationItem}}
+  {{> swatchPicker}}
+  {{> colorEditing}}
+  {{> colorComplement}}
+  {{> colorScheme}}
+  {{> colorSchemeControls}}
+  {{> newColorControls}}
+  {{> colorList}}
+</body>
+
+<template name="locationItem">
+  <div class="color-item js-openSwatchPicker" style="background-color: #333"></div>
+  
+</template>
+
+<template name="swatchPicker">
+  
+</template>
+
+<template name="colorEditing">
+  <div class="editing-wrapper">
+    {{#if colorItem}}
+      {{#with colorItem}}
+        {{> colorEditingItem}}
+        <div class="edit-controls">
+          <button class="js-lightenColor">Lighten</button>
+          <button class="js-darkenColor">Darken</button>
+          <button class="js-saturateColor">Saturate</button>
+          <button class="js-desaturateColor">Desaturate</button>
+<!--           <button class="js-whitenColor">Whiten</button>
+          <button class="js-blackenColor">Blacken</button> -->
+        </div>
+      {{/with}}
+     {{/if}} 
+
+  </div>
+</template>
+
+<template name="colorEditingItem">
+  <div class="color-swatch js-showColorPicker" id="editSwatch" style="background-color: {{colorValue}}"></div>
+</template>
+
+<template name="colorComplement">
+  <div class="complement-wrapper">
+    {{#with complement}}
+      <div class="color-swatch js-insertColorToPallet" style="background-color: {{this}}"></div>
+    {{/with}}
+  </div>
+</template>
+
+
+<template name="colorScheme">
+  <div class="color-scheme">
+    {{#each schemeColors}}
+      <div class="color-swatch js-insertColorToPallet" style="background-color: {{this}}"></div>
+    {{/each}}
+  </div>
+</template>
+
+<template name="colorSchemeControls">
+  <div class="controls">
+    <button class="control js-setSchemeAnalogous">Analogous</button>
+    <button class="control js-setSchemeMonochromatic">Monochromatic</button>
+    <button class="control js-setSchemeSplit" >Split Complements</button>
+    <button class="control js-setSchemeTriad">Triad</button>
+    <button class="control js-setSchemeTetrad">Tetrad</button>
+  </div>
+</template>
+
+<template name="newColorControls">
+  <div class="new-color-controls">
+    <button class="js-createNewColor">Add Random Color</button>
+    <button id="addNewColor">Add New Color</button>
+  </div>
+</template>
+
+<template name="colorList">
+  <div class="color-list">
+    {{#each colors}}
+      {{> colorItem}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="colorItem">
+  <div class="color-item js-selectColor {{selected}}" style="background-color: {{colorValue}}"></div>
+</template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<template name="XXXcolorItem">
+  <div id="{{_id}}" class="color-item" style=" 
+    {{themeColorFor "background" colorValue}} 
+    {{themeColorFor "text" "#FFFFFF" greyscale="" lighten=".9"}} 
+    {{themeColorFor "border" colorValue darken=".3" saturate=".1"}}
+    ">{{colorValue}}</div>
+</template>
+
+
+
+
+
+
+
+
+
+
+
