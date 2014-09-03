@@ -1,0 +1,6 @@
+{
+  "public": {
+    "appcache": "prompt"
+  },
+  "auto": "11"
+}
