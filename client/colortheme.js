@@ -14,7 +14,7 @@ Template.colorsThemeList.helpers({
     return Object.keys(obj)
   },
   getLocationColor: function () {
-    return UI._parentData(1).location[this]
+    return UI._parentData(1).locations[this]
   }
 })
 
@@ -28,20 +28,20 @@ Template.importThemes.events({
   'click .js-exportTheme': function () {
     // var themeData = ColorThemes.findOne({},{fields: {location: 1, themeName: 1, themeType: 1, locationGroup: 1, themeVersion: 1}})
     var themeData = ColorThemes.findOne({},{fields: {_id: 0, active: 0}})
-    parseColorTheme(themeData) 
+    var textToWrite = JSON.stringify(themeData, undefined, 3)
     // var textToWrite = document.getElementById("inputTextToSave").value;
-    // var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
+    var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
     // var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
 
-    // var downloadLink = document.createElement("a");
-    // downloadLink.download = fileNameToSaveAs;
-    // downloadLink.innerHTML = "Download File";
-    // if (window.webkitURL != null)
-    // {
-    //   // Chrome allows the link to be clicked
-    //   // without actually adding it to the DOM.
-    //   downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-    // }
+    var downloadLink = document.createElement("aaaaa");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    if (window.webkitURL != null)
+    {
+      // Chrome allows the link to be clicked
+      // without actually adding it to the DOM.
+      downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+    }
     // else
     // {
     //   // Firefox requires the link to be added to the DOM
