@@ -251,12 +251,12 @@ if (Meteor.isServer) {
 
       var defaultTheme =  ColorThemes.insert({
           themeName: 'Default',
-          thmeType: 'static',
-          locationGroup: 'MultiApp',
           themeVersion: '0.1.0',
+          themeType: 'static',
+          locationGroup: 'MultiApp',
           active: true,
           projectId: Random.id(),
-          location: {
+          locations: {
             menu_main_top: '#1ABC9C',
             menu_action_right: '#16A085',
             menu_bottom_bar: '#27AE60',
@@ -270,15 +270,13 @@ if (Meteor.isServer) {
         Colors.insert({
           colorValue: '#1ABC9C',
           colorName: '',
-          location: '#1ABC9C' + "",
-          locationName: ['menu_main_top'],
+          locationsName: ['menu_main_top'],
           colorTheme: defaultTheme,
           createdAt: new Date()
         });
         Colors.insert({
           colorValue: '#16A085',
           colorName: '',
-          location: '#16A085' + "",
           locationName: ['menu_action_right'],
           colorTheme: defaultTheme,
           createdAt: new Date()
@@ -287,8 +285,7 @@ if (Meteor.isServer) {
         Colors.insert({
           colorValue: '#9B59B6',
           colorName: '',
-          location: '#9B59B6' + "",
-          locationName: [],
+          locationName: ['menu_buttom_item'],
           colorTheme: defaultTheme,
           createdAt: new Date()
         });
@@ -296,8 +293,7 @@ if (Meteor.isServer) {
         Colors.insert({
           colorValue: '#8E44AD',
           colorName: '',
-          location: '#8E44AD' + "",
-          locationName: [],
+          locationName: ['app_search_bar'],
           colorTheme: defaultTheme,
           createdAt: new Date()
         });
@@ -305,8 +301,7 @@ if (Meteor.isServer) {
         Colors.insert({
           colorValue: '#27AE60',
           colorName: '',
-          location: '#27AE60' + "",
-          locationName: [],
+          locationName: ['menu_bottom_bar'],
           colorTheme: defaultTheme,
           createdAt: new Date()
         });
