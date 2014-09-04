@@ -29,29 +29,12 @@ Template.importThemes.events({
     // var themeData = ColorThemes.findOne({},{fields: {location: 1, themeName: 1, themeType: 1, locationGroup: 1, themeVersion: 1}})
     var themeData = ColorThemes.findOne({},{fields: {_id: 0, active: 0}})
     var textToWrite = JSON.stringify(themeData, undefined, 3)
-    // var textToWrite = document.getElementById("inputTextToSave").value;
+    var fileNameToSaveAs = 'theme.txt'
+    var browserName = navigator.appName;
+
     var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
-    // var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
+    
+    saveAs(textFileAsBlob, fileNameToSaveAs);
 
-    var downloadLink = document.createElement("aaaaa");
-    downloadLink.download = fileNameToSaveAs;
-    downloadLink.innerHTML = "Download File";
-    if (window.webkitURL != null)
-    {
-      // Chrome allows the link to be clicked
-      // without actually adding it to the DOM.
-      downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-    }
-    // else
-    // {
-    //   // Firefox requires the link to be added to the DOM
-    //   // before it can be clicked.
-    //   downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-    //   downloadLink.onclick = destroyClickedElement;
-    //   downloadLink.style.display = "none";
-    //   document.body.appendChild(downloadLink);
-    // }
-
-    // downloadLink.click();
   }
 })
