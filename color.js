@@ -1,4 +1,5 @@
 Colors = new Meteor.Collection('colors');
+ColorsThemes = new Meteor.Collection('colorsthemes');
 
 if (Meteor.isClient) {
 
@@ -244,8 +245,24 @@ Template.newColorControls.rendered = function () {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
+    Colors.remove({})
     // code to run on server at startup
       if (Colors.find().count() === 0) {
+
+        ColorsThemes.insert({
+          themeName: 'Default',
+          thmeType: 'static',
+          locationGroup: 'MultiApp',
+          themeVersion: '0.1.0',
+          active: true,
+          projectId: Random.id(),
+          location: {
+            menu_main_top: '',
+            menu_action_right: ''
+
+          }
+        })
+
         var colors = ["#1ABC9C",
                      "#2ECC71",
                      "#16A085",
@@ -257,7 +274,14 @@ if (Meteor.isServer) {
                      "#9B59B6",
                      "#34495E"];
         for (var i = 0; i < colors.length; i++)
-          Colors.insert({colorValue: colors[i], location: i + ""});
+          Colors.insert({
+            colorValue: colors[i],
+            colorName: '',
+            location: i + "",
+            locationName: [],
+            colorTheme: '',
+            createdAt: new Date()
+          });
       }
     });
 }
