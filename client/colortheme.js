@@ -14,4 +14,10 @@ Template.colorsThemeList.events({
   'click .js-makeActiveTheme': function () {
     Session.set('active_ColorsTheme', this._id)
   }
+});
+
+Template.importThemes.events({
+  'click .js-exportTheme': function () {
+    
+  }
 })

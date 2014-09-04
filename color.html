@@ -3,6 +3,7 @@
 </head>
 
 <body>
+{{> importThemes}}
 {{> locationItem}}
   {{> swatchPicker}}
   {{> colorEditing}}
@@ -117,7 +118,10 @@
 </template>
 
 
-
+<template name="importThemes">
+  <button class="js-importTheme">Import</button>
+  <button class="js-exportTheme">Export</button>
+</template>
 
 
 
