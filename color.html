@@ -11,6 +11,9 @@
   {{> colorSchemeControls}}
   {{> newColorControls}}
   {{> colorList}}
+  
+  {{> colorsThemeAddNew}}
+  {{> colorsThemeList}}
 </body>
 
 <template name="locationItem">
@@ -81,6 +84,7 @@
 
 <template name="colorList">
   <div class="color-list">
+  <h5>Theme Colors</h5>
     {{#each colors}}
       {{> colorItem}}
     {{/each}}
@@ -91,11 +95,26 @@
   <div class="color-item js-selectColor {{selected}}" style="background-color: {{colorValue}}"></div>
 </template>
 
+<template name="colorsThemeList">
+  <div>
+    <h3>THeme list</h3>
+      {{#each colorsThemes}}
+        <h5>{{themeName}}</h5>
+        <button class="js-makeActiveTheme">Select</button>
+        <h5>Locations</h5>
+        {{#each getLocationArray location}}
+        <div style="background-color: {{getLocationColor}}">
+          
+          <p>{{this}}</p>
+        </div>
+        {{/each}}
+      {{/each}}
+  </div>
+</template>
 
-
-
-
-
+<template name="colorsThemeAddNew">
+  <button>Add new Theme</button>
+</template>
 
 
 

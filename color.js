@@ -1,5 +1,5 @@
 Colors = new Meteor.Collection('colors');
-ColorsThemes = new Meteor.Collection('colorsthemes');
+ColorThemes = new Meteor.Collection('colorthemes');
 
 if (Meteor.isClient) {
 
@@ -93,7 +93,7 @@ if (Meteor.isClient) {
 
   Template.colorList.helpers({
     colors : function () {
-     return Colors.find({});
+     return Session.get('active_ColorsTheme') ?  Colors.find({colorTheme: Session.get('active_ColorsTheme')}) : Colors.find();
     }
   });
 
@@ -245,11 +245,11 @@ Template.newColorControls.rendered = function () {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    Colors.remove({})
+
     // code to run on server at startup
       if (Colors.find().count() === 0) {
 
-        ColorsThemes.insert({
+      var defaultTheme =  ColorThemes.insert({
           themeName: 'Default',
           thmeType: 'static',
           locationGroup: 'MultiApp',
@@ -257,31 +257,79 @@ if (Meteor.isServer) {
           active: true,
           projectId: Random.id(),
           location: {
-            menu_main_top: '',
-            menu_action_right: ''
+            menu_main_top: '#1ABC9C',
+            menu_action_right: '#16A085',
+            menu_bottom_bar: '#27AE60',
+            menu_buttom_item: '#9B59B6',
+            app_search_bar: '#8E44AD',
+
 
           }
-        })
+        });
 
-        var colors = ["#1ABC9C",
-                     "#2ECC71",
-                     "#16A085",
-                     "#27AE60",
-                     "#2980B9",
-                     "#8E44AD",
-                     "#2C3E50",
-                     "#3498DB",
-                     "#9B59B6",
-                     "#34495E"];
-        for (var i = 0; i < colors.length; i++)
-          Colors.insert({
-            colorValue: colors[i],
-            colorName: '',
-            location: i + "",
-            locationName: [],
-            colorTheme: '',
-            createdAt: new Date()
-          });
+        Colors.insert({
+          colorValue: '#1ABC9C',
+          colorName: '',
+          location: '#1ABC9C' + "",
+          locationName: ['menu_main_top'],
+          colorTheme: defaultTheme,
+          createdAt: new Date()
+        });
+        Colors.insert({
+          colorValue: '#16A085',
+          colorName: '',
+          location: '#16A085' + "",
+          locationName: ['menu_action_right'],
+          colorTheme: defaultTheme,
+          createdAt: new Date()
+        });
+
+        Colors.insert({
+          colorValue: '#9B59B6',
+          colorName: '',
+          location: '#9B59B6' + "",
+          locationName: [],
+          colorTheme: defaultTheme,
+          createdAt: new Date()
+        });
+
+        Colors.insert({
+          colorValue: '#8E44AD',
+          colorName: '',
+          location: '#8E44AD' + "",
+          locationName: [],
+          colorTheme: defaultTheme,
+          createdAt: new Date()
+        });
+
+        Colors.insert({
+          colorValue: '#27AE60',
+          colorName: '',
+          location: '#27AE60' + "",
+          locationName: [],
+          colorTheme: defaultTheme,
+          createdAt: new Date()
+        });
+
+        // var colors = ["#1ABC9C",
+        //              "#2ECC71",
+        //              "#16A085",
+        //              "#27AE60",
+        //              "#2980B9",
+        //              "#8E44AD",
+        //              "#2C3E50",
+        //              "#3498DB",
+        //              "#9B59B6",
+        //              "#34495E"];
+        // for (var i = 0; i < colors.length; i++)
+        //   Colors.insert({
+        //     colorValue: colors[i],
+        //     colorName: '',
+        //     location: i + "",
+        //     locationName: [],
+        //     colorTheme: '',
+        //     createdAt: new Date()
+        //   });
       }
     });
 }
