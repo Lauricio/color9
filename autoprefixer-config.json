@@ -1,3 +1,1 @@
-{
-  "browsers": ["> 1%", "last 2 versions", "Firefox ESR", "Opera 12.1", "BlackBerry 10", "Android 4", "ios 5", "Explorer 10"]
-}
+{"browsers": ["> 1%", "last 2 versions", "Firefox ESR", "Opera 12.1", "BlackBerry 10", "Android 4", "ios 5", "Explorer 10"]}
