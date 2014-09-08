@@ -1,0 +1,41 @@
+@warning: #e74c3c;
+
+.warning-title {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: rgba(red(@warning), green(@warning), blue(@warning), .65);
+  background-color: rgba(209, 41, 41, 0.90);
+  color: white;
+  padding: 1em;
+  opacity: 0;
+  display: none;
+
+  &.is-active {
+    display: block;
+    animation: fadeInWarning 1.5s linear;
+  }
+
+}
+
+@keyframes online {
+  0% { transform: translate3d(-100%, 0, 0); }
+  5% { transform: translate3d(0, 0, 0); }
+  95% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-100%, 0, 0); }
+}
+
+@keyframes offline {
+  0% { transform: translate3d(-100%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes fadeInWarning {
+  0%   { opacity: 0; }
+  10%   { opacity: 1; }
+  60%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
