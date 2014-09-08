@@ -1,0 +1,167 @@
+@level-1: 100;
+@menu: #333;
+@light-heading: #C3C4C5;
+@dark-heading: #545657;
+@background: #DDE3E6;
+@turquoise: #1ABC9C;
+@emerland: #2ECC71;
+@peter-river: #3498DB;
+@amethyst: #9B59B6;
+@wet-asphalt: #34495E;
+
+@green-sea: #16A085;
+@nephritis: #27AE60;
+@belize-hole: #2980B9;
+@wisteria: #8E44AD;
+@midnight-blue: #2C3E50;
+
+
+@sun-flower: #F1C40F;
+@carrot: #E67E22;
+@alizarin: #E74C3C;
+@clouds: #ECF0F1;
+@concrete: #95A5A6;
+
+@orange: #F39C12;
+@pumpkin: #D35400;
+@pomegranate: #C0392B;
+@silver: #BDC3C7;
+@asbestos: #7F8C8D;
+
+.overlay-base {
+  position: absolute;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  background: rgba(94, 90, 89, 0.6);
+  transition: opacity 0.5s;
+}
+
+.unstyled-button {
+    padding: 0;
+    border: 0;
+    outline: none;
+    background-color: inherit;
+}
+
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.swatchPicker-selectModal {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
+  bottom: 10%;
+  overflow-y: auto;
+  z-index: @level-1;
+  background-color: rgba(red(@menu), green(@menu), blue(@menu), .95);
+  // background-color: @background;
+  margin: 0 1.5rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-content: space-around;
+  padding: 1em .5em;
+  box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.45);
+  border-radius: 10px;
+
+  transform: scale(0.7);
+  transform: translate3d(0, -200%, 0);
+  opacity: 0;
+  transition: all 0.3s;
+
+  &.is-open {
+    transform: translate3d(0, 0, 0);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.swatch-color-item {
+  &:extend(.unstyled-button);
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  border-radius: 50%;
+  margin: .8em;
+  border: 1px solid #e3e3e3;
+  position: relative;
+
+  &.is-active {
+    // border: 6px dashed #e3e3e3;
+    &:before {
+      content: " ";
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: inline-block;
+      position: absolute;
+      top: -9px;
+      left: -9px;
+      /* right: 0; */
+      /* bottom: 0; */
+      border: 3px dashed #727272;
+    }
+  }
+
+  .swatch-label {
+    // &:extend(.text-overflow);
+    position: absolute;
+    bottom: -.3em;
+    left: 0;
+    right: 0;
+    background-color: @menu;
+    color: #e3e3e3;
+    border: 1px solid #e3e3e3;
+    padding: .2em;
+  }
+
+  .selection-marker {
+    position: absolute;
+    top: -1.3em;
+    left: 0;
+    right: 0;
+    color: #e3e3e3;
+    font-size: 2em;
+  }
+}
+
+.swatchPicker-selectModal-overlay {
+  &:extend(.overlay-base);
+  z-index: @level-1 - 10;
+}
+
+.is-open + .swatchPicker-selectModal-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.close-modal {
+  &:extend(.unstyled-button);
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: @light-heading;
+  background-color: transparent;
+  padding: .8rem;
+}
+
+.save-modal {
+  &:extend(.unstyled-button);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: @nephritis;
+  background-color: transparent;
+  padding: 1.2rem;
+}
+

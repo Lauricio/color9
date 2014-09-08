@@ -6,23 +6,23 @@ function parseColorTheme (data) {
 // '\r\n';
 }
 
-Template.colorsThemeList.helpers({
-  colorsThemes: function () {
-    return ColorThemes.find()
-  },
-  getLocationArray: function (obj) {
-    return Object.keys(obj)
-  },
-  getLocationColor: function () {
-    return UI._parentData(1).locations[this]
-  }
-})
+// Template.colorsThemeList.helpers({
+//   colorsThemes: function () {
+//     return ColorThemes.find()
+//   },
+//   getLocationArray: function (obj) {
+//     return Object.keys(obj)
+//   },
+//   getLocationColor: function () {
+//     return UI._parentData(1).locations[this]
+//   }
+// })
 
-Template.colorsThemeList.events({
-  'click .js-makeActiveTheme': function () {
-    Session.set('active_ColorsTheme', this._id)
-  }
-});
+// Template.colorsThemeList.events({
+//   'click .js-makeActiveTheme': function () {
+//     Session.set('active_ColorsTheme', this._id)
+//   }
+// });
 
 Template.importThemes.events({
   'click .js-exportTheme': function () {
